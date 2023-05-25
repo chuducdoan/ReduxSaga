@@ -1,0 +1,15 @@
+1. Khoi tao du an:
+npx create-react-app myapp --template redux-typescript
+
+2. De nhung saga:
+import createSagaMiddleware from 'redux-saga';
+const sagaMiddleware = createSagaMiddleware();
+
+// custom khi muon nhung them middleware trong configureStore
+middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+
+// sau khi mount saga vao redux toolkit ta se run sagaMiddlewave
+sagaMiddleware.run(rootSaga);
+
+3. VE saga
+- De lang nghe mot action nao do, ta dung takeEvery
