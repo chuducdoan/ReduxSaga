@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Input } from 'antd';
 
 function App() {
+  const [name, setName] = useState('');
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Input type="number" onKeyDown={(evt) => evt.which === 229 && evt.preventDefault()} />
         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

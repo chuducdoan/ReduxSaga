@@ -13,3 +13,19 @@ sagaMiddleware.run(rootSaga);
 
 3. VE saga
 - De lang nghe mot action nao do, ta dung takeEvery
+
+ 3.1. Phân biệt Effect và Effect Creator
+  - Effect: chỉ đơn giản là một javascript object có chứa thông tin để saga middleware biết cần phải làm gì.
+  - Effect Creator: là một function trả về một Effect. Và nó không thực thi cái Effect này, người thực thi là saga middleware, chứ không phải Effect Creator.
+  - Các hàm dùng trong Redux Saga: takeEvery, takeLastest, ... đây là những Effect Creator.
+ 3.2. Các Effect Creator
+  - takeEvery(pattern, saga, ...args): Chạy saga mỗi lần khi có action pattern được dispatch, dispatch bao nhiêu sẽ chạy bấy nhiêu cái saga.
+  - takeLastest(pattern, saga, ...args): chạy saga, nhưng khi có action pattern mới được dispatch, thì cái saga trước đó sẽ bị cancel.
+  - takeLeading(pattern, saga, ...args): Chạy saga khi action pattern được dispatch, những action tiếp theo sẽ bị cancel cho đến khi saga trước đó chạy xong.
+  - put(action): dispatch action từ saga
+  - call(fn, ...args): gọi hàm fn và truyền tham số args vào hàm đó.
+  - all([...effects]): Chạy tất cả effects cùng một lúc.
+  - take(pattern) and fork(fn, ...args): mô hình watcher ... worker, đợi dispatchaction pattern thì sẽ thực hiện một cái task nào đó.
+  - throttle(ms, pattern, saga, ...args): throttle cái action pattern, đảm bảo chỉ chạy saga một lần trong khoảng thời gian ms.
+  - debounce(ms, pattern, saga, ...args): debounce cái action pattern, đảm bảo chỉ chạy saga một lần sau khi đã đợi khoảng thời gian ms.
+  - retry(maxTries, delay, fn, ...args): Cố gắng gọi lại hàm fn nếu faield, sau mỗi delay milliseconds và tối đa chỉ thử maxTries lần.
