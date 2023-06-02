@@ -1,7 +1,7 @@
 /// <reference types="react-scripts" />
-declare module '*.png';
-declare module '*.svg';
-declare module '*.mp4';
+declare module "*.png";
+declare module "*.svg";
+declare module "*.mp4";
 
 interface WindowChain {
   ethereum?: {

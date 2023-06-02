@@ -29,3 +29,28 @@ sagaMiddleware.run(rootSaga);
   - throttle(ms, pattern, saga, ...args): throttle cái action pattern, đảm bảo chỉ chạy saga một lần trong khoảng thời gian ms.
   - debounce(ms, pattern, saga, ...args): debounce cái action pattern, đảm bảo chỉ chạy saga một lần sau khi đã đợi khoảng thời gian ms.
   - retry(maxTries, delay, fn, ...args): Cố gắng gọi lại hàm fn nếu faield, sau mỗi delay milliseconds và tối đa chỉ thử maxTries lần.
+
+4. Tong quan Web3-React
+- Các loại ví: Coinbase Wallet, Wallet Connect, Metamask
+5. Block Change
+https://docs.cloud.coinbase.com/wallet-sdk/docs/web3-react
+- Step1: install web3:
+  npm i web3
+  "@web3-react/core": "^6.1.9",
+  "@web3-react/injected-connector": "^6.0.7",
+  "@web3-react/walletconnect-connector": "^6.2.13",
+- Step 2: add Provider vao du an:
+  Web3ReactProvider, Provider (react-redux)
+- Step 3: Cài đặt các trình kết nối
+    + @web3-react/walletlink-connector => Coinbase Wallet
+    + @web3-react/walletconnect-connecto => Wallet Connect
+    + @web3-react/injected-connector => Injected (e.g Metamask)
+    + Khởi tạo các trình kết nối để tích hợp vào dapp, mỗi trình kết nối có một bộ tham số bắt buộc riêng biệt
+    để pass vào như JSON RPC URL hoặc mặc định chain ID.
+- khai bao:
+  const { activate, deactivate } = useWeb3React();
+- khoi tao connector:
+  + injected: new InjectedConnector({supportedChainIds: [280 || 56]})
+  + walletconnect: 
+- load provider (setup network)
+  + them file react-app-env.d.ts
