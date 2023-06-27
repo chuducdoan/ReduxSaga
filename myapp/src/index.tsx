@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import Providers from 'Providers';
+import { BackToTop, Loading } from 'components';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
+const getLoading = () => {
+  return <Loading />;
+};
+
 root.render(
   <React.StrictMode>
     <Providers>
-      <App />
+      <Suspense fallback={getLoading()}>
+        <App />
+        <BackToTop />
+      </Suspense>
     </Providers>
   </React.StrictMode>
 );
