@@ -70,7 +70,7 @@ function App() {
     <div className="App">
       <Button onClick={choseWallet}>Connect Wallet</Button>
       <Button onClick={handleOnLogout}>Logout</Button>
-      <div style={{ height: '1200px' }}></div>
+      <div style={{ height: '1700px' }}></div>
     </div>
   );
 }
