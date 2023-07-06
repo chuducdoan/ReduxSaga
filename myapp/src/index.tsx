@@ -1,11 +1,11 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
 import Providers from 'Providers';
 import { BackToTop, Loading } from 'components';
+import App from './App';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -15,14 +15,12 @@ const getLoading = () => {
 };
 
 root.render(
-  <React.StrictMode>
-    <Providers>
-      <Suspense fallback={getLoading()}>
-        <App />
-        <BackToTop />
-      </Suspense>
-    </Providers>
-  </React.StrictMode>
+  <Providers>
+    <Suspense fallback={getLoading()}>
+      <App />
+      <BackToTop />
+    </Suspense>
+  </Providers>
 );
 
 // If you want to start measuring performance in your app, pass a function
